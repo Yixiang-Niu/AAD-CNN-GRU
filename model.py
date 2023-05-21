@@ -35,11 +35,11 @@ def AAD(shape_eeg, shape_sti,
 
     # Path for stimulus
     if len(sti1.shape) == 4:    # the 4th value of the shape of stimulus is feature_num
-        feature_dense_sti = tf.keras.layers.Dense(1, activation=None, use_bias=False, kernel_constraint=NonNegative())
-        sti1 = feature_dense_sti(sti1);  sti1 = tf.squeeze(sti1, -1)
-        sti2 = feature_dense_sti(sti2);  sti2 = tf.squeeze(sti2, -1)
+        feature_fusion = tf.keras.layers.Dense(1, activation=None, use_bias=False, kernel_constraint=NonNegative())
+        sti1 = feature_fusion(sti1);  sti1 = tf.squeeze(sti1, -1)
+        sti2 = feature_fusion(sti2);  sti2 = tf.squeeze(sti2, -1)
         if sources == 3:
-            sti3 = feature_dense_sti(sti3);  sti3 = tf.squeeze(sti3, -1)
+            sti3 = feature_fusion(sti3);  sti3 = tf.squeeze(sti3, -1)
 
     Conv1D = tf.keras.layers.Conv1D(kernels, kernel_size, strides=strides, dilation_rate=dilation_rate, activation=None)
     sti1 = Conv1D(sti1)
