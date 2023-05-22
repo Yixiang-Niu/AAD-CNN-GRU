@@ -23,7 +23,7 @@ def AAD(shape_eeg, shape_sti,
     """
     # Inputs
     input0 = tf.keras.layers.Input(shape=shape_eeg);    eeg = input0 # EEG or CSP-filtered EEG
-    input1 = tf.keras.layers.Input(shape=shape_sti);    sti1 = input1 # 1st sound source within a mixed stimulus
+    input1 = tf.keras.layers.Input(shape=shape_sti);    sti1 = input1 # feature of the 1st sound source within a mixed stimulus
     input2 = tf.keras.layers.Input(shape=shape_sti);    sti2 = input2 # 2nd sound source
     if sources == 3:
         input3 = tf.keras.layers.Input(shape=shape_sti);    sti3 = input3 # 3rd sound source
@@ -35,7 +35,7 @@ def AAD(shape_eeg, shape_sti,
     eeg = tf.compat.v1.keras.layers.CuDNNGRU(units, return_sequences=True)(eeg)
 
     # Path for stimulus
-    if len(sti1.shape) == 4:    # the 4th value of the shape of stimulus is feature_num
+    if len(sti1.shape) == 4:    # the 4th value of the stimulus shape is feature_num
         feature_fusion = tf.keras.layers.Dense(1, activation=None, use_bias=False, kernel_constraint=NonNegative())
         sti1 = feature_fusion(sti1);  sti1 = tf.squeeze(sti1, -1)
         sti2 = feature_fusion(sti2);  sti2 = tf.squeeze(sti2, -1)
