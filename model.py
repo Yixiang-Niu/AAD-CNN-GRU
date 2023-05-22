@@ -84,6 +84,7 @@ def AAD(shape_eeg, shape_sti,
         SSIM_concat = tf.keras.layers.concatenate([SSIM_concat, SSIM3])
 
     one_hot = tf.keras.layers.Dense(units=sources, activation='softmax')(SSIM_concat)
+    
     # Building a model
     if sources == 2:
         model = tf.keras.Model(inputs=[input0, input1, input2], outputs=one_hot)
