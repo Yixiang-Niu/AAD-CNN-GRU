@@ -31,6 +31,7 @@ def AAD(shape_eeg, shape_sti,
     # Path for EEG
     eeg = tf.keras.layers.Conv1D(kernels, kernel_size, strides=strides, dilation_rate=dilation_rate, activation=None)(eeg)
     eeg = tf.keras.layers.BatchNormalization()(eeg)
+    # eeg = tf.keras.layers.AveragePooling1D(pool_size=2, strides=2)(eeg) # no pooling
     eeg = tf.compat.v1.keras.layers.CuDNNGRU(units, return_sequences=True)(eeg)
 
     # Path for stimulus
@@ -52,6 +53,12 @@ def AAD(shape_eeg, shape_sti,
     sti2 = BN(sti2)
     if sources == 3:
         sti3 = BN(sti3)
+        
+    # Pooling = tf.keras.layers.AveragePooling1D(pool_size=2, strides=2) # no pooling
+    # sti1 = Pooling(sti1)
+    # sti2 = Pooling(sti2)
+    # if sources == 3:
+    #     sti3 = Pooling(sti3)
 
     GRU = tf.compat.v1.keras.layers.CuDNNGRU(units, return_sequences=True)
     sti1 = GRU(sti1)
