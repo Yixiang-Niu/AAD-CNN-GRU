@@ -14,7 +14,7 @@ def AAD(shape_eeg, shape_sti,
     """
     # Inputs
     input0 = tf.keras.layers.Input(shape=shape_eeg);    eeg = input0 # EEG or CSP-filtered EEG
-    input1 = tf.keras.layers.Input(shape=shape_sti);    sti1 = input1 # 1st speech within a mixed stimulus
+    input1 = tf.keras.layers.Input(shape=shape_sti);    sti1 = input1 # feature of the 1st speech within a mixed stimulus
     input2 = tf.keras.layers.Input(shape=shape_sti);    sti2 = input2 # 2nd speech
 
     # Path for EEG
