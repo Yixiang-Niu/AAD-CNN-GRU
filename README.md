@@ -5,4 +5,4 @@ Two separate paths are adopted to generate the EEG embedding and sound source em
 ## Files
 **model-early.py:** an early version of the model developed for the task one of the ICASSP 2023 “Auditory EEG Decoding” Signal Processing Grand Challenge
 
-**model.py:** the final version of the model reported in "Music-oriented auditory attention detection from electroencephalogram" (submitted)
+**model.py:** the modified version of the model reported in "Music-oriented auditory attention detection from electroencephalogram" (submitted)
