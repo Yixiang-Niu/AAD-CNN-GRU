@@ -13,7 +13,7 @@ def AAD(shape_eeg, shape_sti,
         units:         int, dimensionality of the output space of the GRU layer
     """
     # Inputs
-    input0 = tf.keras.layers.Input(shape=shape_eeg);    eeg = input0 # EEG or CSP-filtered EEG
+    input0 = tf.keras.layers.Input(shape=shape_eeg);    eeg = input0 # multi-channel EEG
     input1 = tf.keras.layers.Input(shape=shape_sti);    sti1 = input1 # feature of the 1st speech within a mixed stimulus
     input2 = tf.keras.layers.Input(shape=shape_sti);    sti2 = input2 # 2nd speech
 
